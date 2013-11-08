@@ -1,11 +1,13 @@
 package hangman;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class Client {
+public class Client{
 	
 	private String address;
 	private int port;
@@ -19,8 +21,8 @@ public class Client {
 		Socket socket = new Socket(address,port);
 		socket.setSoTimeout(10000);
 		PrintWriter wr = new PrintWriter(socket.getOutputStream());
-		//wr.println("BITE !!");
-		//wr.flush();
+		wr.println("BITE !!");
+		wr.flush();
 		socket.close();
 		
 	} catch (UnknownHostException e) {
@@ -32,5 +34,6 @@ public class Client {
 	}
 	
 	}
+
 
 }
