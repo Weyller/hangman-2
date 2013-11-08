@@ -3,8 +3,12 @@ package hangman;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("OK");
+		String address = "127.0.0.1"; 
+		int port = 10000;
+		
+		Server server = new Server();
+		
+		Client client = new Client(address, port);
 	}
 
 }
