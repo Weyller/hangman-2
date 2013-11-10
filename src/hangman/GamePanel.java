@@ -65,6 +65,7 @@ public class GamePanel extends JPanel implements ActionListener, Observer{
 		if (e.getSource() == send){
 			String inputLetter = letter.getText();
 			logicClient.sendWord(inputLetter);
+			letter.setText("");
 		}
 	}
 

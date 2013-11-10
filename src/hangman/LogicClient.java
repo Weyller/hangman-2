@@ -68,6 +68,10 @@ public class LogicClient extends Observable implements Runnable{
 		return "newgame";
 	}
 	
+	public void messageReceive(){
+		
+	}
+	
 	public void sendWord(String inputLetter){
 		try {
 			
