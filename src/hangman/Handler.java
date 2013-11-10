@@ -75,6 +75,13 @@ public class Handler extends Thread{
 						wr.println("remaining:" + remainingAttempts);
 						wr.flush();
 					}
+					else {
+						results--;
+						wr.println("lose: ");
+						wr.println("results:" + results);
+						wr.flush();
+					}
+					
 
 				}
 
