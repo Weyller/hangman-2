@@ -60,7 +60,7 @@ public class Handler extends Thread{
 						
 						if (word.equals(hiddenWord(foundLetters, word))){
 							results++;
-							wr.println("win: ");
+							wr.println("win:" + word);
 							wr.println("results:" + results);
 							wr.flush();
 						}
@@ -78,7 +78,7 @@ public class Handler extends Thread{
 					}
 					else {
 						results--;
-						wr.println("lose: ");
+						wr.println("lose:" + word);
 						wr.println("results:" + results);
 						wr.flush();
 					}
@@ -88,7 +88,7 @@ public class Handler extends Thread{
 
 				else if (str.equals(word)){
 					results++;
-					wr.println("win: ");
+					wr.println("win:" + word);
 					wr.println("results:" + results);
 					wr.flush();
 				}
