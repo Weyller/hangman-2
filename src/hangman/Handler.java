@@ -28,7 +28,6 @@ public class Handler extends Thread{
 			rd = new BufferedReader( new InputStreamReader(socket.getInputStream()));
 			String str;
 			while ((str = rd.readLine()) != null){
-			System.out.println(str);
 
 				if (str.equals("newgame")){
 
