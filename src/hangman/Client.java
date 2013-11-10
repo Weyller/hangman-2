@@ -17,7 +17,7 @@ public class Client{
 		this.address = address;
 		this.port = port;
 	
-	/*try {
+	try {
 		Socket socket = new Socket(address,port);
 		socket.setSoTimeout(10000);
 		PrintWriter wr = new PrintWriter(socket.getOutputStream());
@@ -31,7 +31,7 @@ public class Client{
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}*/
+	}
 	
 	}
 

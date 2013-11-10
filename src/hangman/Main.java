@@ -1,10 +1,14 @@
 package hangman;
 
+import java.io.IOException;
+
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
-		Window window = new Window(300,300);
+		Client client = new Client("localhost",10000);
+		
+		ServerHangman serverHangman = new ServerHangman(10000);
 	}
 
 }
