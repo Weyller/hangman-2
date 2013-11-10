@@ -14,6 +14,7 @@ public class Client{
 
 	public Client(String address, int port) {
 		// TODO Auto-generated constructor stub
+<<<<<<< HEAD
 		/*this.address = address;
 		this.port = port;*/
 
@@ -25,10 +26,16 @@ public class Client{
 		t2.start();
 		
 		/*try {
+=======
+		this.address = address;
+		this.port = port;
+	
+	try {
+>>>>>>> Server
 		Socket socket = new Socket(address,port);
 		socket.setSoTimeout(10000);
 		PrintWriter wr = new PrintWriter(socket.getOutputStream());
-		wr.println("BITE !!");
+		wr.println("newgame");
 		wr.flush();
 		socket.close();
 
@@ -38,8 +45,13 @@ public class Client{
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+<<<<<<< HEAD
 	}*/
 
+=======
+	}
+	
+>>>>>>> Server
 	}
 
 
