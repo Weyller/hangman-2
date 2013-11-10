@@ -55,9 +55,18 @@ public class Handler extends Thread{
 				else if (str.length() == 1){
 					if(word.contains(str) && ! foundLetters.contains(str.charAt(0))){
 						foundLetters.add(str.charAt(0));
+						
+						if (word.equals(hiddenWord(foundLetters, word))){
+							results++;
+							wr.println("win:");
+							wr.println("results:" + results);
+							wr.flush();
+						}
+						else{
 						wr.println("word:" + hiddenWord(foundLetters, word));
 						wr.println("remaining:" + remainingAttempts);
 						wr.flush();
+						}
 					}
 					else if (remainingAttempts > 0){
 						remainingAttempts--;
@@ -75,13 +84,13 @@ public class Handler extends Thread{
 					wr.flush();
 				}
 
-				else if (remainingAttempts > 0){
+				else if ((! str.equals("")) && remainingAttempts > 0){
 						remainingAttempts--;
 						wr.println("word:" + hiddenWord(foundLetters, word));
 						wr.flush();
 				}
 				
-				else{
+				else if ( !str.equals("")){
 					results--;
 					wr.println("lose:");
 					wr.println("results:" + results);
