@@ -34,8 +34,7 @@ public class MainPanel extends JPanel {
 		this.revalidate();
 	}
 
-	public void setGame(){
-		gamePanel = new GamePanel(this,logicClient);
+	public void setGame(GamePanel gamePanel){
 		this.removeAll();
 		this.add(gamePanel);
 		this.repaint();

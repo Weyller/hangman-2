@@ -14,7 +14,7 @@ public class ConnectionPanel extends JPanel implements ActionListener{
 	private JButton checkButton = new JButton("Connection");
 	private MainPanel mainPanel;
 	String inputAddress;
-	int inputPort;
+	String inputPort;
 	JTextField address = new JTextField("IP address");
 	JTextField port = new JTextField("Port");
 	BoxLayout bl = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -29,20 +29,44 @@ public class ConnectionPanel extends JPanel implements ActionListener{
 		this.add(checkButton);
 		checkButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 	}
+	
+	public LogicClient choiceLogic(){
+			inputAddress = address.getText();
+			inputPort = port.getText() ;
+			if ((inputAddress.equals("IP address")) && (inputPort.equals("Port"))){
+				LogicClient logicClient = new LogicClient("127.0.0.1",10000);
+				return logicClient;
+			}
+			else if ((!inputAddress.equals("")) && (!inputPort.equals(""))){
+				LogicClient logicClient = new LogicClient(inputAddress,Integer.parseInt(inputPort));
+				return logicClient;
+			} else if ((!inputAddress.equals("")) && inputPort.equals("")) {
+				int port = 10000;
+				LogicClient logicClient = new LogicClient(inputAddress,port);
+				return logicClient;
+			} else if (inputAddress.equals("") && (!inputPort.equals(""))) {
+				String address = "127.0.0.1";
+				LogicClient logicClient = new LogicClient(address,Integer.parseInt(inputPort));
+				return logicClient;
+			} else if (inputAddress.equals("") && inputPort.equals("")) {
+				String address = "127.0.0.1";
+				int port = 10000;
+				LogicClient logicClient = new LogicClient(address,port);
+				return logicClient;
+			} else
+				return null;
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == checkButton){
-			 inputAddress = address.getText();
-			 inputPort = Integer.parseInt(port.getText());
-			 LogicClient logicClient = new LogicClient(inputAddress,inputPort);
+			
+			 LogicClient logicClient = this.choiceLogic();
 			 Thread logicThread = new Thread(logicClient);
 			 logicThread.start();
-			 if (logicClient.socketCreation().equals("OK")){
-				 logicClient.newGame();
-				 GamePanel gamePanel = new GamePanel(mainPanel,logicClient);
-				 mainPanel.setGame();
-			 }
-			 logicClient.closeSocket();
+			 GamePanel gamePanel = new GamePanel(mainPanel,logicClient);
+			 mainPanel.setGame(gamePanel);
+			 
+			 
 		}
 	}
 
