@@ -32,6 +32,7 @@ public class ServerHangman {
 			}
 			catch (SocketException e) { e.printStackTrace(); }
 		}
+		
 
 	}
 
