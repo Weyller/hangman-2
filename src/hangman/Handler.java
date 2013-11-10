@@ -36,6 +36,7 @@ public class Handler extends Thread{
 				if (str.equals("newgame")){
 
 					this.remainingAttempts = 10;
+					this.foundLetters = new ArrayList<Character>();
 
 					// Random selection of a word in the provided dictionary
 					try {
