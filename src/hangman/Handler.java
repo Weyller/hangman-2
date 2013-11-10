@@ -41,7 +41,7 @@ public class Handler extends Thread{
 					try {
 						int nbWords = countWords("words");
 						this.word = selectWord("words", nbWords);
-						wr.println(hiddenWord(foundLetters, word));
+						wr.println("word:" + hiddenWord(foundLetters, word));
 						wr.println("remaining:" + remainingAttempts);
 						wr.println("results:" + results);
 						wr.flush();
@@ -55,13 +55,13 @@ public class Handler extends Thread{
 				else if (str.length() == 1){
 					if(word.contains(str)){
 						foundLetters.add(str.charAt(0));
-						wr.println(hiddenWord(foundLetters, word));
+						wr.println("word:" + hiddenWord(foundLetters, word));
 						wr.println("remaining:" + remainingAttempts);
 						wr.flush();
 					}
 					else{
 						remainingAttempts--;
-						wr.println(hiddenWord(foundLetters, word));
+						wr.println("word:" + hiddenWord(foundLetters, word));
 						wr.println("remaining:" + remainingAttempts);
 						wr.flush();
 					}
@@ -77,7 +77,7 @@ public class Handler extends Thread{
 
 				else if (remainingAttempts > 0){
 						remainingAttempts--;
-						wr.println(hiddenWord(foundLetters, word));
+						wr.println("word:" + hiddenWord(foundLetters, word));
 						wr.flush();
 				}
 				
