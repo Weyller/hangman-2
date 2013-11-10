@@ -11,6 +11,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -81,6 +82,20 @@ public class GamePanel extends JPanel implements ActionListener, Observer{
 		if (action.equals("results")){
 			updateResults(argument);
 		}
+		if (action.equals("win")){
+			popUpWin();
+		}
+		if (action.equals("lose")){
+			popUpLose();
+		}
+	}
+
+	private void popUpLose() {
+		JOptionPane.showMessageDialog(null,"Looser !");
+	}
+
+	private void popUpWin() {
+		JOptionPane.showMessageDialog(null,"Congratulations, you won !");
 	}
 
 	private void updateResults(String argument) {
