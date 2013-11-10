@@ -83,20 +83,20 @@ public class GamePanel extends JPanel implements ActionListener, Observer{
 			updateResults(argument);
 		}
 		if (action.equals("win")){
-			popUpWin();
+			popUpWin(argument);
 		}
 		if (action.equals("lose")){
-			popUpLose();
+			popUpLose(argument);
 		}
 	}
 
-	private void popUpLose() {
-		JOptionPane.showMessageDialog(null,"Looser !");
+	private void popUpLose(String argument) {
+		JOptionPane.showMessageDialog(null,"Looser ! The word was : " + argument);
 		logicClient.newGame();
 	}
 
-	private void popUpWin() {
-		JOptionPane.showMessageDialog(null,"Congratulations, you won !");
+	private void popUpWin(String argument) {
+		JOptionPane.showMessageDialog(null,"Congratulations, you won ! The word was : " + argument);
 		logicClient.newGame();
 	}
 
