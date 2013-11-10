@@ -8,12 +8,22 @@ public class MainPanel extends JPanel {
 
 	private ConnectionPanel connectionPanel;
 	private GamePanel gamePanel;
+	private ChoicePanel choicePanel;
+	private LogicClient logicClient;
 	
 	public MainPanel(int width, int height){
 
 		this.setSize(width, height);
 		this.setBackground(Color.white);
-		setConnection();
+		setChoice();
+	}
+	
+	public void setChoice(){
+		choicePanel = new ChoicePanel(this);
+		this.removeAll();
+		this.add(choicePanel);
+		this.repaint();
+		this.revalidate();
 	}
 
 	public void setConnection(){
@@ -25,7 +35,7 @@ public class MainPanel extends JPanel {
 	}
 
 	public void setGame(){
-		gamePanel = new GamePanel(this);
+		gamePanel = new GamePanel(this,logicClient);
 		this.removeAll();
 		this.add(gamePanel);
 		this.repaint();

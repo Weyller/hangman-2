@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 
-public class ServerHangman {
+public class ServerHangman implements Runnable {
 
 	String address;
 	int host;
@@ -23,17 +23,23 @@ public class ServerHangman {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
 		while (true) {
+			Socket socket;
 			try {
-				Socket socket = serverSocket.accept();
+				socket = serverSocket.accept();
 				Handler handler =  new Handler(socket);
 				handler.setPriority( handler.getPriority() + 1 );
 				handler.start();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			catch (SocketException e) { e.printStackTrace(); }
 		}
-		
-
 	}
 
 }
