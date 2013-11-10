@@ -6,14 +6,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Handler extends Thread{
 
 	private Socket socket;
 	private String word;
-	private int results;
+	private int results = 0;
 	private int remainingAttempts;
+	private List<Character> foundLetters = new ArrayList<Character>();
 
 	Handler(Socket socket) throws IOException { // thread constructor
 		this.socket = socket;
@@ -24,39 +28,64 @@ public class Handler extends Thread{
 		BufferedReader rd;
 		try {
 			PrintWriter wr = new PrintWriter(socket.getOutputStream());
-			
+
 			rd = new BufferedReader( new InputStreamReader(socket.getInputStream()));
 			String str;
 			while ((str = rd.readLine()) != null){
 
 				if (str.equals("newgame")){
 
+					this.remainingAttempts = 10;
+
 					// Random selection of a word in the provided dictionary
 					try {
 						int nbWords = countWords("words");
 						this.word = selectWord("words", nbWords);
-						System.out.println(word);
+						wr.println(hiddenWord(foundLetters, word));
+						wr.println("remaining:" + remainingAttempts);
+						wr.println("results:" + results);
+						wr.flush();
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					
+
 
 				}
 
 				else if (str.length() == 1){
+					if(word.contains(str)){
+						foundLetters.add(str.charAt(0));
+						wr.println(hiddenWord(foundLetters, word));
+						wr.println("remaining:" + remainingAttempts);
+						wr.flush();
+					}
+					else{
+						remainingAttempts--;
+						wr.println(hiddenWord(foundLetters, word));
+						wr.println("remaining:" + remainingAttempts);
+						wr.flush();
+					}
 
 				}
 
 				else if (str.equals(word)){
-
+					results++;
+					wr.println("congratulations, you won!");
+					wr.println("results:" + results);
+					wr.flush();
 				}
 
 				else if (remainingAttempts > 0){
-
+						remainingAttempts--;
+						wr.println(hiddenWord(foundLetters, word));
+						wr.flush();
 				}
-
+				
 				else{
-
+					results--;
+					wr.println("game over, you lose.");
+					wr.println("results:" + results);
+					wr.flush();
 				}
 
 			}
@@ -110,6 +139,21 @@ public class Handler extends Thread{
 			scanner.close();
 		}
 		return word;
+	}
+
+	private String hiddenWord(List<Character> foundLetters, String word){
+
+		String hiddenWord = "";
+		for(int i = 0; i < word.length(); i++){
+			
+			if(foundLetters.contains(word.charAt(i))){
+				hiddenWord += word.charAt(i);
+			}
+			else{
+				hiddenWord += "-";
+			}
+		}
+		return hiddenWord;
 	}
 
 }
