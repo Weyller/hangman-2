@@ -41,6 +41,7 @@ public class Handler extends Thread{
 					try {
 						int nbWords = countWords("words");
 						this.word = selectWord("words", nbWords);
+						System.out.println(word);
 						wr.println("word:" + hiddenWord(foundLetters, word));
 						wr.println("remaining:" + remainingAttempts);
 						wr.println("results:" + results);
@@ -58,7 +59,7 @@ public class Handler extends Thread{
 						
 						if (word.equals(hiddenWord(foundLetters, word))){
 							results++;
-							wr.println("win:");
+							wr.println("win: ");
 							wr.println("results:" + results);
 							wr.flush();
 						}
@@ -79,7 +80,7 @@ public class Handler extends Thread{
 
 				else if (str.equals(word)){
 					results++;
-					wr.println("win:");
+					wr.println("win: ");
 					wr.println("results:" + results);
 					wr.flush();
 				}
@@ -92,7 +93,7 @@ public class Handler extends Thread{
 				
 				else if ( !str.equals("")){
 					results--;
-					wr.println("lose:");
+					wr.println("lose: ");
 					wr.println("results:" + results);
 					wr.flush();
 				}
