@@ -70,7 +70,7 @@ public class Handler extends Thread{
 						wr.flush();
 						}
 					}
-					else if (remainingAttempts > 0){
+					else if (remainingAttempts > 1){
 						remainingAttempts--;
 						wr.println("word:" + hiddenWord(foundLetters, word));
 						wr.println("remaining:" + remainingAttempts);
@@ -93,7 +93,7 @@ public class Handler extends Thread{
 					wr.flush();
 				}
 
-				else if ((! str.equals("")) && remainingAttempts > 0){
+				else if ((! str.equals("")) && remainingAttempts > 1){
 						remainingAttempts--;
 						wr.println("word:" + hiddenWord(foundLetters, word));
 						wr.flush();
