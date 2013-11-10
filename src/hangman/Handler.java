@@ -138,7 +138,7 @@ public class Handler extends Thread{
 		finally{
 			scanner.close();
 		}
-		return word;
+		return word.toLowerCase();
 	}
 
 	private String hiddenWord(List<Character> foundLetters, String word){
