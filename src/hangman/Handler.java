@@ -70,7 +70,7 @@ public class Handler extends Thread{
 
 				else if (str.equals(word)){
 					results++;
-					wr.println("game:congratulations, you won!");
+					wr.println("win:");
 					wr.println("results:" + results);
 					wr.flush();
 				}
@@ -83,7 +83,7 @@ public class Handler extends Thread{
 				
 				else{
 					results--;
-					wr.println("game:game over, you lose.");
+					wr.println("lose:");
 					wr.println("results:" + results);
 					wr.flush();
 				}
