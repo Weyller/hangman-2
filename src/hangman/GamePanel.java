@@ -92,10 +92,12 @@ public class GamePanel extends JPanel implements ActionListener, Observer{
 
 	private void popUpLose() {
 		JOptionPane.showMessageDialog(null,"Looser !");
+		logicClient.newGame();
 	}
 
 	private void popUpWin() {
 		JOptionPane.showMessageDialog(null,"Congratulations, you won !");
+		logicClient.newGame();
 	}
 
 	private void updateResults(String argument) {
