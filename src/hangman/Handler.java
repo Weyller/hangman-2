@@ -28,6 +28,7 @@ public class Handler extends Thread{
 			rd = new BufferedReader( new InputStreamReader(socket.getInputStream()));
 			String str;
 			while ((str = rd.readLine()) != null){
+			System.out.println(str);
 
 				if (str.equals("newgame")){
 
@@ -35,6 +36,7 @@ public class Handler extends Thread{
 					try {
 						int nbWords = countWords("words");
 						this.word = selectWord("words", nbWords);
+						System.out.println(word);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}

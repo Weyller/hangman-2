@@ -8,7 +8,7 @@ public class Main {
 		
 		Client client = new Client("localhost",10000);
 		
-		ServerHangman serverHangman = new ServerHangman(10000);
+		//ServerHangman serverHangman = new ServerHangman(10000);
 	}
 
 }

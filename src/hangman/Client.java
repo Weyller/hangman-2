@@ -21,7 +21,7 @@ public class Client{
 		Socket socket = new Socket(address,port);
 		socket.setSoTimeout(10000);
 		PrintWriter wr = new PrintWriter(socket.getOutputStream());
-		wr.println("BITE !!");
+		wr.println("newgame");
 		wr.flush();
 		socket.close();
 		
