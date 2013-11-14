@@ -36,8 +36,6 @@ public class LogicClient extends Observable implements Runnable{
 	public void run() {
 
 		if (this.socketCreation().equals("OK")){
-			
-			
 			this.newGame();
 			this.receivedWord();
 			//this.closeSocket();
@@ -52,7 +50,7 @@ public class LogicClient extends Observable implements Runnable{
 
 			try {
 				clientSocket = new Socket(address,port);
-				clientSocket.setSoTimeout(5000);
+				//clientSocket.setSoTimeout(5000);
 			} catch (SocketTimeoutException e) {
 				System.out.println("TIme out !!");
 				e.printStackTrace();
