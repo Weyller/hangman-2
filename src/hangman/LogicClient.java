@@ -11,7 +11,10 @@ import java.net.UnknownHostException;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JOptionPane;
+
 public class LogicClient extends Observable implements Runnable{
+	// LogisClient is the thread that is responsible for communicating with the server during the game
 
 	private String address;
 	private int port;
@@ -39,7 +42,6 @@ public class LogicClient extends Observable implements Runnable{
 
 		if (isConnected){
 			this.newGame();
-			System.out.println("Appel de la méthode receivedWord");
 			this.receivedWord();
 		}
 
@@ -70,7 +72,7 @@ public class LogicClient extends Observable implements Runnable{
 
 	}
 
-	public String newGame(){
+	public void newGame(){
 		try {
 			PrintWriter wr = new PrintWriter(clientSocket.getOutputStream());
 			wr.println("newgame");
@@ -79,13 +81,8 @@ public class LogicClient extends Observable implements Runnable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "newgame";
 	}
-
-	public void messageReceive(){
-
-	}
-
+	
 	public void sendWord(String inputLetter){
 		try {
 
@@ -131,8 +128,7 @@ public class LogicClient extends Observable implements Runnable{
 		}
 		String str;
 		try {
-			while (rd.readLine() != null){
-				str = rd.readLine();
+			while ((str = rd.readLine()) != null){
 				super.setChanged();
 				super.notifyObservers(str);
 			}

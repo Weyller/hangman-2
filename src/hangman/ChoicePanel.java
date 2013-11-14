@@ -12,10 +12,11 @@ import javax.swing.JTextField;
 
 public class ChoicePanel extends JPanel implements ActionListener {
 	
+	// ChoicePanel allows a user to launch a server, a client, or both (in two separate threads)
+	
 	private JButton clientButton = new JButton("Client");
 	private JButton serverButton = new JButton("Server");
 	private MainPanel mainPanel;
-	private ServerHangman serverHangman;
 	BoxLayout layoutChoicePanel = new BoxLayout(this, BoxLayout.Y_AXIS);
 	
 	public ChoicePanel(MainPanel mainPanel){

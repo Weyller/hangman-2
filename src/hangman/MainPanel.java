@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 public class MainPanel extends JPanel {
+	// The main panel contains the choice panel, the connecion panel and the game panel
 
 	private ConnectionPanel connectionPanel;
 	private ChoicePanel choicePanel;
