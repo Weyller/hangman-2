@@ -39,6 +39,7 @@ public class LogicClient extends Observable implements Runnable{
 			
 			
 			this.newGame();
+			System.out.println("Appel de la méthode receivedWord");
 			this.receivedWord();
 			//this.closeSocket();
 		}
@@ -52,7 +53,7 @@ public class LogicClient extends Observable implements Runnable{
 
 			try {
 				clientSocket = new Socket(address,port);
-				clientSocket.setSoTimeout(5000);
+				//clientSocket.setSoTimeout(5000);
 			} catch (SocketTimeoutException e) {
 				System.out.println("TIme out !!");
 				e.printStackTrace();
@@ -100,6 +101,7 @@ public class LogicClient extends Observable implements Runnable{
 	public void closeSocket(){
 		try {
 			clientSocket.close();
+			System.out.println("Socket fermée côté client");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,14 +131,13 @@ public class LogicClient extends Observable implements Runnable{
 		}
 		String str;
 		try {
-			while ((str = rd.readLine()) != null){
+			while (rd.readLine() != null){
+				str = rd.readLine();
 				super.setChanged();
 				super.notifyObservers(str);
 			}
-			
-			
 		} catch (IOException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 	}
