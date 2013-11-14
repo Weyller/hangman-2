@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ConnectionPanel extends JPanel implements ActionListener{
+	
+	// ConnectionPanel invites the user to connect to a game server via an IP and a port
+	// If no information is provided, the default IP is set to "localhost" and the default port to 10000
 
 	private JButton checkButton = new JButton("Connection");
 	private MainPanel mainPanel;
@@ -33,28 +36,7 @@ public class ConnectionPanel extends JPanel implements ActionListener{
 	public LogicClient choiceLogic(){
 			inputAddress = address.getText();
 			inputPort = port.getText() ;
-//			if ((inputAddress.equals("IP address")) && (inputPort.equals("Port"))){
-//				LogicClient logicClient = new LogicClient("127.0.0.1",10000);
-//				return logicClient;
-//			}
-//			else if ((!inputAddress.equals("")) && (!inputPort.equals(""))){
-//				LogicClient logicClient = new LogicClient(inputAddress,Integer.parseInt(inputPort));
-//				return logicClient;
-//			} else if ((!inputAddress.equals("")) && inputPort.equals("")) {
-//				int port = 10000;
-//				LogicClient logicClient = new LogicClient(inputAddress,port);
-//				return logicClient;
-//			} else if (inputAddress.equals("") && (!inputPort.equals(""))) {
-//				String address = "127.0.0.1";
-//				LogicClient logicClient = new LogicClient(address,Integer.parseInt(inputPort));
-//				return logicClient;
-//			} else if (inputAddress.equals("") && inputPort.equals("")) {
-//				String address = "127.0.0.1";
-//				int port = 10000;
-//				LogicClient logicClient = new LogicClient(address,port);
-//				return logicClient;
-//			} else
-//				return null;
+
 			
 			if(inputAddress.equals("IP address")){
 				inputAddress = "localhost";

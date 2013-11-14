@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
@@ -12,9 +11,8 @@ import java.util.Observable;
 
 import javax.swing.JOptionPane;
 
-import hangman.GamePanel;
-
 public class LogicClient extends Observable implements Runnable{
+	// LogisClient is the thread that is responsible for communicating with the server during the game
 
 	private String address;
 	private int port;
@@ -39,9 +37,7 @@ public class LogicClient extends Observable implements Runnable{
 			
 			
 			this.newGame();
-			System.out.println("Appel de la méthode receivedWord");
 			this.receivedWord();
-			//this.closeSocket();
 		}
 		
 		else {
@@ -70,7 +66,7 @@ public class LogicClient extends Observable implements Runnable{
 			
 	}
 
-	public String newGame(){
+	public void newGame(){
 		try {
 			PrintWriter wr = new PrintWriter(clientSocket.getOutputStream());
 			wr.println("newgame");
@@ -79,11 +75,6 @@ public class LogicClient extends Observable implements Runnable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "newgame";
-	}
-	
-	public void messageReceive(){
-		
 	}
 	
 	public void sendWord(String inputLetter){
@@ -131,8 +122,7 @@ public class LogicClient extends Observable implements Runnable{
 		}
 		String str;
 		try {
-			while (rd.readLine() != null){
-				str = rd.readLine();
+			while ((str = rd.readLine()) != null){
 				super.setChanged();
 				super.notifyObservers(str);
 			}

@@ -18,8 +18,8 @@ public class Window extends JFrame{
 		
 		
         this.addWindowListener(exitListener);
+        // The Windows listener allows to properly close the socket when quitting the game panel
 		
-		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.mainPanel = new MainPanel(this.getWidth(), this.getHeight());
 		this.setContentPane(mainPanel);
 		this.setVisible(true);
