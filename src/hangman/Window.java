@@ -8,11 +8,10 @@ public class Window extends JFrame{
 		this.setSize(width, height);
 		this.setTitle("Hangman");
 		this.setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		MainPanel mainPanel = new MainPanel(this.getWidth(), this.getHeight());
 		this.setContentPane(mainPanel);
 		this.setVisible(true);
 	}
 
-	
 }

@@ -12,7 +12,6 @@ public class MainPanel extends JPanel {
 	private LogicClient logicClient;
 	
 	public MainPanel(int width, int height){
-
 		this.setSize(width, height);
 		this.setBackground(Color.white);
 		setChoice();

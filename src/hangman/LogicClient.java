@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.Observable;
 
@@ -35,25 +36,29 @@ public class LogicClient extends Observable implements Runnable{
 		this.socketCreation();
 
 		if (this.socketCreation().equals("OK")){
+			
+			
 			this.newGame();
 			this.receivedWord();
-			this.closeSocket();
+			//this.closeSocket();
 		}
 	}
 
 	public String socketCreation(){
 
-		try {
-			clientSocket = new Socket(address,port);
-			//clientSocket.setSoTimeout(10000);
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "OK";
+			try {
+				clientSocket = new Socket(address,port);
+				//clientSocket.setSoTimeout(5000);
+				//System.out.println(clientSocket.getSoTimeout());
+			} catch (UnknownHostException e) {
+				System.out.println("UnknownHost");
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				System.out.println("IO");
+				e.printStackTrace();
+			}
+			return "OK";
 	}
 
 	public String newGame(){
