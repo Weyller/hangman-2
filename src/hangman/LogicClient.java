@@ -10,6 +10,8 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.Observable;
 
+import javax.swing.JOptionPane;
+
 import hangman.GamePanel;
 
 public class LogicClient extends Observable implements Runnable{
@@ -33,8 +35,6 @@ public class LogicClient extends Observable implements Runnable{
 	}
 	public void run() {
 
-		this.socketCreation();
-
 		if (this.socketCreation().equals("OK")){
 			
 			
@@ -42,14 +42,21 @@ public class LogicClient extends Observable implements Runnable{
 			this.receivedWord();
 			//this.closeSocket();
 		}
+		
+		else {
+			JOptionPane.showMessageDialog(null,"Server could not be reached");
+		}
 	}
 
 	public String socketCreation(){
 
 			try {
 				clientSocket = new Socket(address,port);
-				//clientSocket.setSoTimeout(5000);
-				//System.out.println(clientSocket.getSoTimeout());
+				clientSocket.setSoTimeout(5000);
+			} catch (SocketTimeoutException e) {
+				System.out.println("TIme out !!");
+				e.printStackTrace();
+				return "ERROR";
 			} catch (UnknownHostException e) {
 				System.out.println("UnknownHost");
 				e.printStackTrace();
@@ -59,6 +66,7 @@ public class LogicClient extends Observable implements Runnable{
 				e.printStackTrace();
 			}
 			return "OK";
+			
 	}
 
 	public String newGame(){
