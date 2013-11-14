@@ -7,9 +7,8 @@ import javax.swing.JPanel;
 public class MainPanel extends JPanel {
 
 	private ConnectionPanel connectionPanel;
-	private GamePanel gamePanel;
 	private ChoicePanel choicePanel;
-	private LogicClient logicClient;
+	private GamePanel gamePanel;
 	
 	public MainPanel(int width, int height){
 		this.setSize(width, height);
@@ -34,10 +33,19 @@ public class MainPanel extends JPanel {
 	}
 
 	public void setGame(GamePanel gamePanel){
+		this.setGamePanel(gamePanel); 
 		this.removeAll();
 		this.add(gamePanel);
 		this.repaint();
 		this.revalidate();
+	}
+
+	public GamePanel getGamePanel() {
+		return gamePanel;
+	}
+
+	public void setGamePanel(GamePanel gamePanel) {
+		this.gamePanel = gamePanel;
 	}
 	
 }

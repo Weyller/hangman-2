@@ -33,28 +33,39 @@ public class ConnectionPanel extends JPanel implements ActionListener{
 	public LogicClient choiceLogic(){
 			inputAddress = address.getText();
 			inputPort = port.getText() ;
-			if ((inputAddress.equals("IP address")) && (inputPort.equals("Port"))){
-				LogicClient logicClient = new LogicClient("127.0.0.1",10000);
-				return logicClient;
+//			if ((inputAddress.equals("IP address")) && (inputPort.equals("Port"))){
+//				LogicClient logicClient = new LogicClient("127.0.0.1",10000);
+//				return logicClient;
+//			}
+//			else if ((!inputAddress.equals("")) && (!inputPort.equals(""))){
+//				LogicClient logicClient = new LogicClient(inputAddress,Integer.parseInt(inputPort));
+//				return logicClient;
+//			} else if ((!inputAddress.equals("")) && inputPort.equals("")) {
+//				int port = 10000;
+//				LogicClient logicClient = new LogicClient(inputAddress,port);
+//				return logicClient;
+//			} else if (inputAddress.equals("") && (!inputPort.equals(""))) {
+//				String address = "127.0.0.1";
+//				LogicClient logicClient = new LogicClient(address,Integer.parseInt(inputPort));
+//				return logicClient;
+//			} else if (inputAddress.equals("") && inputPort.equals("")) {
+//				String address = "127.0.0.1";
+//				int port = 10000;
+//				LogicClient logicClient = new LogicClient(address,port);
+//				return logicClient;
+//			} else
+//				return null;
+			
+			if(inputAddress.equals("IP address")){
+				inputAddress = "localhost";
 			}
-			else if ((!inputAddress.equals("")) && (!inputPort.equals(""))){
-				LogicClient logicClient = new LogicClient(inputAddress,Integer.parseInt(inputPort));
-				return logicClient;
-			} else if ((!inputAddress.equals("")) && inputPort.equals("")) {
-				int port = 10000;
-				LogicClient logicClient = new LogicClient(inputAddress,port);
-				return logicClient;
-			} else if (inputAddress.equals("") && (!inputPort.equals(""))) {
-				String address = "127.0.0.1";
-				LogicClient logicClient = new LogicClient(address,Integer.parseInt(inputPort));
-				return logicClient;
-			} else if (inputAddress.equals("") && inputPort.equals("")) {
-				String address = "127.0.0.1";
-				int port = 10000;
-				LogicClient logicClient = new LogicClient(address,port);
-				return logicClient;
-			} else
-				return null;
+			if(inputPort.equals("Port")){
+				inputPort = "10000";
+			}
+			
+			LogicClient logicClient = new LogicClient(inputAddress,Integer.parseInt(inputPort));
+			return logicClient;
+			
 	}
 
 	public void actionPerformed(ActionEvent e) {

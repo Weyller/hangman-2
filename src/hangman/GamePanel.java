@@ -57,7 +57,7 @@ public class GamePanel extends JPanel implements ActionListener, Observer{
 		letter.setAlignmentX(Component.CENTER_ALIGNMENT);
 		word.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.mainPanel = mainPanel;
-		this.logicClient = logicClient;
+		this.setLogicClient(logicClient);
 		logicClient.setObserver(this);
 
 	}
@@ -65,7 +65,7 @@ public class GamePanel extends JPanel implements ActionListener, Observer{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == send){
 			String inputLetter = letter.getText();
-			logicClient.sendWord(inputLetter);
+			getLogicClient().sendWord(inputLetter);
 			letter.setText("");
 		}
 	}
@@ -92,12 +92,12 @@ public class GamePanel extends JPanel implements ActionListener, Observer{
 
 	private void popUpLose(String argument) {
 		JOptionPane.showMessageDialog(null,"Looser ! The word was : " + argument);
-		logicClient.newGame();
+		getLogicClient().newGame();
 	}
 
 	private void popUpWin(String argument) {
 		JOptionPane.showMessageDialog(null,"Congratulations, you won ! The word was : " + argument);
-		logicClient.newGame();
+		getLogicClient().newGame();
 	}
 
 	private void updateResults(String argument) {
@@ -116,6 +116,14 @@ public class GamePanel extends JPanel implements ActionListener, Observer{
 		word.setText(argument);
 		this.repaint();
 		this.revalidate();
+	}
+
+	public LogicClient getLogicClient() {
+		return logicClient;
+	}
+
+	public void setLogicClient(LogicClient logicClient) {
+		this.logicClient = logicClient;
 	}
 
 
