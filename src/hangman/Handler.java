@@ -96,6 +96,7 @@ public class Handler extends Thread{
 				else if ((! str.equals("")) && remainingAttempts > 1){
 						remainingAttempts--;
 						wr.println("word:" + hiddenWord(foundLetters, word));
+						wr.println("remaining:" + remainingAttempts);
 						wr.flush();
 				}
 				
