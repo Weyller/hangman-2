@@ -34,8 +34,6 @@ public class LogicClient extends Observable implements Runnable{
 	public void run() {
 
 		if (this.socketCreation().equals("OK")){
-			
-			
 			this.newGame();
 			this.receivedWord();
 		}
