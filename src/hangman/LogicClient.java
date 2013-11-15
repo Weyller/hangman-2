@@ -131,8 +131,7 @@ public class LogicClient extends Observable implements Runnable{
 		}
 		String str;
 		try {
-			while (rd.readLine() != null){
-				str = rd.readLine();
+			while ((str = rd.readLine()) != null){
 				super.setChanged();
 				super.notifyObservers(str);
 			}
